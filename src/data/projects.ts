@@ -1,31 +1,31 @@
 export const projects = [
   {
     title: "AI Image Generator",
-    image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    image: "/lovable-uploads/6908bccb-2d69-44d6-9a9b-d01d4a6bd11e.png",
     liveLink: "https://image-genie-hub.vercel.app/",
     sourceCode: "https://github.com/NebeyouMusie/image-genie-hub.git",
   },
   {
     title: "E-commerce Template",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+    image: "/lovable-uploads/34d63f00-2d5a-47ee-a53f-2745606a0db0.png",
     liveLink: "https://ecom-template-genie.vercel.app/",
     sourceCode: "https://github.com/NebeyouMusie/ecom-template-genie.git",
   },
   {
     title: "Landing Page Website Template",
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+    image: "/lovable-uploads/19bbb9ac-3ddc-4527-9455-be86c9d6af87.png",
     liveLink: "https://preview--landing-spark-template.gptengineer.run/",
     sourceCode: "https://github.com/NebeyouMusie/landing-spark-template.git",
   },
   {
     title: "YouTube Thumbnail Downloader",
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
+    image: "/lovable-uploads/71956c87-a2cd-410b-819f-7133c4ae2e65.png",
     liveLink: "https://youtube-thumbnail-downloader-nu.vercel.app/",
     sourceCode: "https://github.com/NebeyouMusie/YouTube-Thumbnail-Downloader.git",
   },
   {
     title: "Typography Scale Generator",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    image: "/lovable-uploads/f0e7843d-3af6-4fca-beb9-c7fb2b205192.png",
     liveLink: "https://typography-scale-generator.vercel.app/",
     sourceCode: "https://github.com/NebeyouMusie/typofolio-explorer.git",
   },

@@ -1,4 +1,4 @@
-# My 30 Apps
+# My 30 App
 
 ## Project info
 

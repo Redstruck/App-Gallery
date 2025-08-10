@@ -5,7 +5,7 @@ interface ProjectCardProps {
   title: string;
   image: string;
   liveLink: string;
-  sourceCode: string;
+  sourceCode?: string;
 }
 
 export function ProjectCard({ title, image, liveLink, sourceCode }: ProjectCardProps) {
@@ -30,6 +30,7 @@ export function ProjectCard({ title, image, liveLink, sourceCode }: ProjectCardP
             <ExternalLink className="mr-2 h-4 w-4" />
             Live
           </Button>
+{sourceCode && (
           <Button
             variant="outline"
             size="sm"
@@ -39,6 +40,7 @@ export function ProjectCard({ title, image, liveLink, sourceCode }: ProjectCardP
             <Github className="mr-2 h-4 w-4" />
             Code
           </Button>
+        )}
         </div>
       </div>
     </div>

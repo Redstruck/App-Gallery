@@ -14,7 +14,7 @@ export const projects = [
   {
     title: "TaskFlux: Advanced Task Management",
     image: "/lovable-uploads/f3c4ea76-b219-4241-b344-89b463a147b3.png",
-    liveLink: "https://taskflux.netlify.app/",
+    liveLink: "https://task-flux-chi.vercel.app/",
     sourceCode: "https://github.com/Redstruck/Task-Flow",
   },
   {

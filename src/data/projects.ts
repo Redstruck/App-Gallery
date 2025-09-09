@@ -35,10 +35,4 @@ export const projects = [
     liveLink: "https://super-physics-simulator.netlify.app/",
     sourceCode: "https://github.com/Redstruck/Super-Physics-Simulator",
   },
-    {
-    title: "Extra",
-    image: "/lovable-uploads/713be2fc-b6d5-45f7-a684-e640a93aa5cb.png",
-    liveLink: "https://super-physics-simulator.netlify.app/",
-    sourceCode: "https://github.com/Redstruck/Super-Physics-Simulator",
-  },
 ];

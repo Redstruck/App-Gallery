@@ -14,7 +14,7 @@ export const projects = [
   {
     title: "TaskFlux: Advanced Task Management",
     image: "/lovable-uploads/f3c4ea76-b219-4241-b344-89b463a147b3.png",
-    liveLink: "https://task-flux-chi.vercel.app/",
+    liveLink: "https://task-flux.netlify.app/",
     sourceCode: "https://github.com/Redstruck/Task-Flow",
   },
   {
@@ -31,6 +31,12 @@ export const projects = [
   },
   {
     title: "Super-Physics-Simulator",
+    image: "/lovable-uploads/713be2fc-b6d5-45f7-a684-e640a93aa5cb.png",
+    liveLink: "https://super-physics-simulator.netlify.app/",
+    sourceCode: "https://github.com/Redstruck/Super-Physics-Simulator",
+  },
+    {
+    title: "Extra",
     image: "/lovable-uploads/713be2fc-b6d5-45f7-a684-e640a93aa5cb.png",
     liveLink: "https://super-physics-simulator.netlify.app/",
     sourceCode: "https://github.com/Redstruck/Super-Physics-Simulator",

@@ -23,7 +23,7 @@ export function ProjectCard({ title, image, liveLink, sourceCode, description }:
         />
       </div>
       <div className="mt-4">
-        <h3 className="font-semibold text-lg text-card-foreground transition-colors duration-300">{title}</h3>
+        <h3 className="font-semibold text-lg text-card-foreground transition-colors duration-200">{title}</h3>
         
         {description && (
           <div className="mt-3">
@@ -34,20 +34,20 @@ export function ProjectCard({ title, image, liveLink, sourceCode, description }:
               onClick={() => setIsDescriptionOpen(!isDescriptionOpen)}
             >
               <div className="flex items-center gap-2">
-                <Info className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm font-medium">Description</span>
+                <Info className="h-4 w-4 text-muted-foreground transition-colors duration-200" />
+                <span className="text-sm font-medium transition-colors duration-200">Description</span>
               </div>
               {isDescriptionOpen ? (
-                <ChevronUp className="h-4 w-4 text-muted-foreground" />
+                <ChevronUp className="h-4 w-4 text-muted-foreground transition-colors duration-200" />
               ) : (
-                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                <ChevronDown className="h-4 w-4 text-muted-foreground transition-colors duration-200" />
               )}
             </Button>
             
             <div className={`overflow-hidden transition-all duration-300 ${
               isDescriptionOpen ? 'max-h-40 opacity-100 mt-2' : 'max-h-0 opacity-0'
             }`}>
-              <p className="text-sm text-muted-foreground leading-relaxed p-2 bg-muted/50 rounded-md">
+              <p className="text-sm text-muted-foreground leading-relaxed p-2 bg-muted/50 rounded-md transition-colors duration-200">
                 {description}
               </p>
             </div>

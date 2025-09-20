@@ -1,14 +1,18 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, ChevronDown, ChevronUp, Info } from "lucide-react";
 import { Button } from "./ui/button";
+import { useState } from "react";
 
 interface ProjectCardProps {
   title: string;
   image: string;
   liveLink: string;
   sourceCode?: string;
+  description?: string;
 }
 
-export function ProjectCard({ title, image, liveLink, sourceCode }: ProjectCardProps) {
+export function ProjectCard({ title, image, liveLink, sourceCode, description }: ProjectCardProps) {
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+
   return (
     <div className="group relative overflow-hidden rounded-lg border bg-card p-4 transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
       <div className="aspect-video overflow-hidden rounded-md">
@@ -20,6 +24,36 @@ export function ProjectCard({ title, image, liveLink, sourceCode }: ProjectCardP
       </div>
       <div className="mt-4">
         <h3 className="font-semibold text-lg text-card-foreground transition-colors duration-300">{title}</h3>
+        
+        {description && (
+          <div className="mt-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full justify-between p-2 h-auto text-left transition-all duration-300 hover:bg-muted"
+              onClick={() => setIsDescriptionOpen(!isDescriptionOpen)}
+            >
+              <div className="flex items-center gap-2">
+                <Info className="h-4 w-4 text-muted-foreground" />
+                <span className="text-sm font-medium">Description</span>
+              </div>
+              {isDescriptionOpen ? (
+                <ChevronUp className="h-4 w-4 text-muted-foreground" />
+              ) : (
+                <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              )}
+            </Button>
+            
+            <div className={`overflow-hidden transition-all duration-300 ${
+              isDescriptionOpen ? 'max-h-40 opacity-100 mt-2' : 'max-h-0 opacity-0'
+            }`}>
+              <p className="text-sm text-muted-foreground leading-relaxed p-2 bg-muted/50 rounded-md">
+                {description}
+              </p>
+            </div>
+          </div>
+        )}
+        
         <div className="mt-4 flex gap-2">
           <Button
             variant="outline"

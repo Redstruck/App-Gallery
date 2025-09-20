@@ -35,4 +35,58 @@ export const projects = [
     liveLink: "https://super-physics-simulator.netlify.app/",
     sourceCode: "https://github.com/Redstruck/Super-Physics-Simulator",
   },
+  {
+    title: "Calculator Pro",
+    image: "/placeholder.svg",
+    liveLink: "https://calculator-pro-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/calculator-pro",
+  },
+  {
+    title: "Note Taking App",
+    image: "/placeholder.svg",
+    liveLink: "https://notes-app-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/notes-app",
+  },
+  {
+    title: "Weather Dashboard",
+    image: "/placeholder.svg",
+    liveLink: "https://weather-dashboard-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/weather-dashboard",
+  },
+  {
+    title: "Calendar Manager",
+    image: "/placeholder.svg",
+    liveLink: "https://calendar-manager-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/calendar-manager",
+  },
+  {
+    title: "Digital Clock",
+    image: "/placeholder.svg",
+    liveLink: "https://digital-clock-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/digital-clock",
+  },
+  {
+    title: "Maps Explorer",
+    image: "/placeholder.svg",
+    liveLink: "https://maps-explorer-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/maps-explorer",
+  },
+  {
+    title: "Camera App",
+    image: "/placeholder.svg",
+    liveLink: "https://camera-app-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/camera-app",
+  },
+  {
+    title: "Photo Gallery",
+    image: "/placeholder.svg",
+    liveLink: "https://photo-gallery-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/photo-gallery",
+  },
+  {
+    title: "Settings Panel",
+    image: "/placeholder.svg",
+    liveLink: "https://settings-panel-demo.netlify.app/",
+    sourceCode: "https://github.com/demo/settings-panel",
+  },
 ];

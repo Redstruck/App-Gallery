@@ -7,6 +7,7 @@ export const HeroSection = () => {
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [showMainContent, setShowMainContent] = useState(false);
+  const [commandsVisible, setCommandsVisible] = useState(true);
   
   // State for main content typing
   const [mainDisplayedText, setMainDisplayedText] = useState('');
@@ -27,9 +28,13 @@ export const HeroSection = () => {
 
   useEffect(() => {
     if (currentLine >= commandLines.length) {
-      // Show main content instantly after command sequence
-      setShowMainContent(true);
-      return;
+      // All commands completed, make them disappear after a short pause
+      const timeout = setTimeout(() => {
+        setCommandsVisible(false);
+        setShowMainContent(true);
+      }, 200); // Pause after execution command completes
+      
+      return () => clearTimeout(timeout);
     }
 
     const currentText = commandLines[currentLine];
@@ -110,32 +115,42 @@ export const HeroSection = () => {
 
           {/* Terminal content */}
           <div className="font-mono text-left space-y-2 mb-8">
-            {/* Show completed command lines */}
-            {commandLines.slice(0, currentLine).map((line, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-green-400 text-sm"
-              >
-                {line}
-              </motion.div>
-            ))}
-            
-            {/* Show currently typing command */}
-            {currentLine < commandLines.length && (
-              <div className="text-green-400 text-sm">
-                {displayedText}
-                <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
-                  |
-                </span>
-              </div>
+            {/* Show commands only if visible */}
+            {commandsVisible && (
+              <>
+                {/* Show completed command lines */}
+                {commandLines.slice(0, currentLine).map((line, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-green-400 text-sm"
+                  >
+                    {line}
+                  </motion.div>
+                ))}
+                
+                {/* Show currently typing command */}
+                {currentLine < commandLines.length && (
+                  <div className="text-green-400 text-sm">
+                    {displayedText}
+                    <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
+                      |
+                    </span>
+                  </div>
+                )}
+              </>
             )}
             
             {/* Show main content with typing animation */}
             {showMainContent && (
               <>
-                <div className="mt-4"></div>
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="mt-4"
+                />
                 {/* Show completed main lines */}
                 {mainLines.slice(0, mainCurrentLine).map((line, index) => (
                   <motion.div

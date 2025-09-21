@@ -38,11 +38,11 @@ export const AboutSection = () => {
             <div className="h-1 w-32 bg-gradient-to-r from-green-400 to-blue-400"></div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Photo and basic info */}
             <motion.div variants={itemVariants} className="space-y-6">
               <div className="relative group">
-                <div className="w-64 h-64 mx-auto lg:mx-0 relative">
+                <div className="mx-auto lg:mx-0 relative" style={{width: '500px', height: '500px'}}>
                   {/* Glitch effect border */}
                   <div className="absolute inset-0 border-2 border-green-400 transform rotate-1 opacity-50 group-hover:rotate-2 transition-transform"></div>
                   <div className="absolute inset-0 border-2 border-blue-400 transform -rotate-1 opacity-50 group-hover:-rotate-2 transition-transform"></div>

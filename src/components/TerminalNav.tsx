@@ -35,19 +35,29 @@ export const TerminalNav = ({ currentSection, onNavigate }: TerminalNavProps) =>
     >
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          {/* Terminal prompt */}
-          <div className="flex items-center space-x-2 text-green-400 font-mono text-sm">
-            <span className="text-green-300">nishad@portfolio</span>
-            <span className="text-gray-400">:</span>
-            <span className="text-blue-400">{currentPath}</span>
-            <span className="text-gray-400">$</span>
-            {isTyping && (
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
-                className="w-2 h-4 bg-green-400 inline-block ml-1"
-              />
-            )}
+          {/* Left side - Terminal controls and prompt */}
+          <div className="flex items-center space-x-4">
+            {/* Terminal controls */}
+            <div className="flex space-x-2">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            </div>
+            
+            {/* Terminal prompt */}
+            <div className="flex items-center space-x-2 text-green-400 font-mono text-sm">
+              <span className="text-green-300">nishad@portfolio</span>
+              <span className="text-gray-400">:</span>
+              <span className="text-blue-400">{currentPath}</span>
+              <span className="text-gray-400">$</span>
+              {isTyping && (
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity }}
+                  className="w-2 h-4 bg-green-400 inline-block ml-1"
+                />
+              )}
+            </div>
           </div>
 
           {/* Navigation commands */}
@@ -82,13 +92,6 @@ export const TerminalNav = ({ currentSection, onNavigate }: TerminalNavProps) =>
                 )}
               </motion.button>
             ))}
-          </div>
-
-          {/* Terminal controls */}
-          <div className="flex space-x-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
         </div>
       </div>

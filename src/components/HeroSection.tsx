@@ -74,11 +74,11 @@ export const HeroSection = () => {
       
       return () => clearTimeout(timeout);
     } else {
-      // Move to next line with pause between name and title, but show buttons immediately after title
+      // Move to next line immediately - no pause between name and title
       const timeout = setTimeout(() => {
         setMainCurrentLine(prev => prev + 1);
         setMainDisplayedText('');
-      }, mainCurrentLine === 0 ? 500 : 0); // 500ms pause only between name and title, no pause after title
+      }, 0); // No pause between any lines
       
       return () => clearTimeout(timeout);
     }

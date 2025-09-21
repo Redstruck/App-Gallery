@@ -56,24 +56,29 @@ export const HeroSection = () => {
     if (!showMainContent) return;
     
     if (mainCurrentLine >= mainLines.length) {
-      setShowButtons(true);
-      return;
+      return; // Don't set buttons here anymore
     }
 
     const currentText = mainLines[mainCurrentLine];
     
     if (mainDisplayedText.length < currentText.length) {
       const timeout = setTimeout(() => {
-        setMainDisplayedText(currentText.slice(0, mainDisplayedText.length + 1));
+        const newText = currentText.slice(0, mainDisplayedText.length + 1);
+        setMainDisplayedText(newText);
+        
+        // If we just finished typing the title (last line), show buttons immediately
+        if (mainCurrentLine === 1 && newText === currentText) {
+          setShowButtons(true);
+        }
       }, 100); // 100ms per character for main content
       
       return () => clearTimeout(timeout);
     } else {
-      // Move to next line with a brief pause
+      // Move to next line with pause between name and title, but show buttons immediately after title
       const timeout = setTimeout(() => {
         setMainCurrentLine(prev => prev + 1);
         setMainDisplayedText('');
-      }, 500); // 500ms pause between name and title
+      }, mainCurrentLine === 0 ? 500 : 0); // 500ms pause only between name and title, no pause after title
       
       return () => clearTimeout(timeout);
     }

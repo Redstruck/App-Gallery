@@ -57,6 +57,14 @@ export const MatrixProjectCard = ({ project, index }: MatrixProjectCardProps) =>
             }}
           />
           
+          {/* Simple green overlay on hover */}
+          <motion.div
+            initial={false}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-green-400/20 pointer-events-none"
+          />
+          
           {/* Terminal-style project number */}
           <div className="absolute top-2 left-2 bg-black/80 border border-green-500/50 px-2 py-1 rounded text-xs font-mono text-green-400">
             [{String(index + 1).padStart(2, '0')}]

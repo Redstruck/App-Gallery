@@ -1,34 +1,93 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { ProjectCard } from "@/components/project-card";
-import { projects } from "@/data/projects";
+import { useState, useEffect } from 'react';
+import { MatrixBackground } from "@/components/MatrixBackground";
+import { TerminalNav } from "@/components/TerminalNav";
+import { HeroSection } from "@/components/HeroSection";
+import { AboutSection } from "@/components/AboutSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
+import { ContactSection } from "@/components/ContactSection";
 
 const Index = () => {
-  return (
-    <ThemeProvider defaultTheme="light">
-      <div className="min-h-screen bg-background p-4 sm:p-8">
-        <header className="container mx-auto flex items-center justify-between mb-8 animate-fade-in">
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">My Projects</h1>
-          <ThemeToggle />
-        </header>
-        <main className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="opacity-0 animate-fade-in"
-                style={{
-                  animationDelay: `${index * 0.1}s`,
-                  animationFillMode: "forwards"
-                }}
-              >
-                <ProjectCard {...project} />
-              </div>
-            ))}
-          </div>
-        </main>
+  const [currentSection, setCurrentSection] = useState('home');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Initialize the portfolio immediately for instant loading
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    // Handle scroll-based navigation
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section === 'home' ? '' : section);
+        if (element || section === 'home') {
+          const top = section === 'home' ? 0 : element!.offsetTop;
+          const bottom = section === 'home' ? window.innerHeight : top + element!.offsetHeight;
+          
+          if (scrollPosition >= top && scrollPosition < bottom) {
+            setCurrentSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavigate = (section: string) => {
+    setCurrentSection(section);
+    
+    if (section === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-green-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-green-400 font-mono">Initializing portfolio...</p>
+        </div>
       </div>
-    </ThemeProvider>
+    );
+  }
+
+  return (
+    <div className="relative min-h-screen text-white overflow-x-hidden">
+      {/* Matrix background effect */}
+      <MatrixBackground />
+      
+      {/* Terminal navigation */}
+      <TerminalNav currentSection={currentSection} onNavigate={handleNavigate} />
+      
+      {/* Main content */}
+      <main className="relative" style={{ zIndex: 10 }}>
+        {/* Hero Section */}
+        <section id="home">
+          <HeroSection />
+        </section>
+        
+        {/* About Section */}
+        <AboutSection />
+        
+        {/* Projects Section */}
+        <ProjectsSection />
+        
+        {/* Contact Section */}
+        <ContactSection />
+      </main>
+    </div>
   );
 };
 

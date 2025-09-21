@@ -1,24 +1,45 @@
-# My 30 Apps
+# Matrix Portfolio - Nishad Raghuvanshi
 
-## Project info
+An ultra-interactive, Matrix-themed portfolio website designed to showcase coding skills for college applications. This portfolio features smooth animations, terminal-style navigation, and a hacker aesthetic that will impress admissions officers.
 
-**URL**: https://lovable.dev/projects/1ad27c38-358a-447c-b3ad-058ccd18f4be
+## 🚀 Features
 
-## How can I edit this code?
+### 🎨 Design Highlights
+- **Matrix Rain Background**: Animated falling code effect using your actual code snippets
+- **Terminal-Style Navigation**: Command-line inspired navigation with hover effects  
+- **Typewriter Hero Section**: Progressive text reveal with authentic terminal feel
+- **Interactive Project Cards**: 3D hover effects and live preview capabilities
+- **Glitch Effects**: Subtle animation touches throughout
+- **Responsive Design**: Optimized for all devices
 
-There are several ways of editing your application.
+### 📱 Sections
+1. **Hero Section**: Animated introduction with typewriter effect
+2. **About Me**: Personal information, skills, and interactive progress bars
+3. **Projects**: Filterable grid of all your applications with live links
+4. **Contact**: Professional contact information with copy-to-clipboard functionality
 
-**Use Lovable**
+## 🎯 Perfect for College Applications
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1ad27c38-358a-447c-b3ad-058ccd18f4be) and start prompting.
+This portfolio showcases:
+- **Technical Skills**: Modern web development proficiency
+- **Creativity**: Unique visual design and interactions
+- **Attention to Detail**: Polished animations and user experience
+- **Project Portfolio**: All your coding projects in one place
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🔧 Customization Guide
 
-**Use your preferred IDE**
+### 1. Personal Information
+Edit `/src/data/personal.ts` to update your details
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 2. Projects  
+Your projects are automatically loaded from `/src/data/projects.ts`
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 3. Contact Links
+Update social links in `/src/components/ContactSection.tsx`
+
+### 4. Add Your Photo
+1. Add your photo to `/public/` directory
+2. Update the `photo` field in `personal.ts`
 
 Follow these steps:
 

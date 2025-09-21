@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { ExternalLink, Github, Code, Eye } from 'lucide-react';
+import { ExternalLink, Code } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -57,35 +57,6 @@ export const MatrixProjectCard = ({ project, index }: MatrixProjectCardProps) =>
             }}
           />
           
-          {/* Overlay on hover */}
-          <motion.div
-            initial={false}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            className="absolute inset-0 bg-green-400/20 flex items-center justify-center space-x-4"
-          >
-            <motion.a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-3 bg-black/80 border border-green-400 rounded-full text-green-400 hover:bg-green-400 hover:text-black transition-colors"
-            >
-              <Eye size={20} />
-            </motion.a>
-            
-            <motion.a
-              href={project.sourceCode}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-3 bg-black/80 border border-blue-400 rounded-full text-blue-400 hover:bg-blue-400 hover:text-black transition-colors"
-            >
-              <Github size={20} />
-            </motion.a>
-          </motion.div>
-
           {/* Terminal-style project number */}
           <div className="absolute top-2 left-2 bg-black/80 border border-green-500/50 px-2 py-1 rounded text-xs font-mono text-green-400">
             [{String(index + 1).padStart(2, '0')}]

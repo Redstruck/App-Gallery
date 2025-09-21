@@ -7,12 +7,22 @@ export const HeroSection = () => {
   const [currentLine, setCurrentLine] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [showMainContent, setShowMainContent] = useState(false);
+  
+  // State for main content typing
+  const [mainDisplayedText, setMainDisplayedText] = useState('');
+  const [mainCurrentLine, setMainCurrentLine] = useState(0);
+  const [showButtons, setShowButtons] = useState(false);
 
   const commandLines = [
     '> Initializing portfolio...',
     '> Loading personal data...',
     '> Compiling projects...',
     '> Ready to showcase skills...',
+  ];
+
+  const mainLines = [
+    `Hello, I'm ${personalInfo.name}`,
+    personalInfo.title,
   ];
 
   useEffect(() => {
@@ -40,6 +50,34 @@ export const HeroSection = () => {
       return () => clearTimeout(timeout);
     }
   }, [displayedText, currentLine, commandLines]);
+
+  // Main content typing effect
+  useEffect(() => {
+    if (!showMainContent) return;
+    
+    if (mainCurrentLine >= mainLines.length) {
+      setShowButtons(true);
+      return;
+    }
+
+    const currentText = mainLines[mainCurrentLine];
+    
+    if (mainDisplayedText.length < currentText.length) {
+      const timeout = setTimeout(() => {
+        setMainDisplayedText(currentText.slice(0, mainDisplayedText.length + 1));
+      }, 100); // 100ms per character for main content
+      
+      return () => clearTimeout(timeout);
+    } else {
+      // Move to next line with a brief pause
+      const timeout = setTimeout(() => {
+        setMainCurrentLine(prev => prev + 1);
+        setMainDisplayedText('');
+      }, 500); // 500ms pause between name and title
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [showMainContent, mainDisplayedText, mainCurrentLine, mainLines]);
 
   // Cursor blinking effect
   useEffect(() => {
@@ -89,30 +127,43 @@ export const HeroSection = () => {
               </div>
             )}
             
-            {/* Show main content instantly after commands complete */}
+            {/* Show main content with typing animation */}
             {showMainContent && (
               <>
                 <div className="mt-4"></div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-white text-3xl md:text-4xl font-bold mt-4"
-                >
-                  Hello, I'm {personalInfo.name}
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="text-green-300 text-xl md:text-2xl"
-                >
-                  {personalInfo.title}
-                </motion.div>
+                {/* Show completed main lines */}
+                {mainLines.slice(0, mainCurrentLine).map((line, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className={index === 0 
+                      ? "text-white text-3xl md:text-4xl font-bold mt-4" 
+                      : "text-green-300 text-xl md:text-2xl"
+                    }
+                  >
+                    {line}
+                  </motion.div>
+                ))}
+                
+                {/* Show currently typing main line */}
+                {mainCurrentLine < mainLines.length && (
+                  <div className={mainCurrentLine === 0 
+                    ? "text-white text-3xl md:text-4xl font-bold mt-4" 
+                    : "text-green-300 text-xl md:text-2xl"
+                  }>
+                    {mainDisplayedText}
+                    <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity`}>
+                      |
+                    </span>
+                  </div>
+                )}
               </>
             )}
           </div>
 
-          {/* Action buttons - show instantly with main content */}
-          {showMainContent && (
+          {/* Action buttons - show after main content typing is complete */}
+          {showButtons && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -140,7 +191,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Scroll indicator */}
-        {showMainContent && (
+        {showButtons && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

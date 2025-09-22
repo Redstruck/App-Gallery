@@ -64,29 +64,32 @@ const Index = () => {
   }
 
   return (
-    <div className="relative min-h-screen text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       {/* Matrix background effect */}
       <MatrixBackground />
       
-      {/* Terminal navigation */}
-      <TerminalNav currentSection={currentSection} onNavigate={handleNavigate} />
-      
-      {/* Main content */}
-      <main className="relative" style={{ zIndex: 10 }}>
-        {/* Hero Section */}
-        <section id="home">
-          <HeroSection />
-        </section>
+      {/* Content Layer */}
+      <div className="relative z-10">
+        {/* Terminal navigation */}
+        <TerminalNav currentSection={currentSection} onNavigate={handleNavigate} />
         
-        {/* About Section */}
-        <AboutSection />
-        
-        {/* Projects Section */}
-        <ProjectsSection />
-        
-        {/* Contact Section */}
-        <ContactSection />
-      </main>
+        {/* Main content */}
+        <main>
+          {/* Hero Section */}
+          <section id="home">
+            <HeroSection />
+          </section>
+          
+          {/* About Section */}
+          <AboutSection />
+          
+          {/* Projects Section */}
+          <ProjectsSection />
+          
+          {/* Contact Section */}
+          <ContactSection />
+        </main>
+      </div>
     </div>
   );
 };

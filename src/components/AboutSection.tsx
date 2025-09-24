@@ -50,12 +50,12 @@ export const AboutSection = () => {
                   {/* Photo placeholder */}
                   <div className="relative w-full h-full bg-gradient-to-br from-green-400/20 to-blue-400/20 border border-green-500/30 overflow-hidden">
                     <img
-                      src="https://picsum.photos/500/500?random=portrait"
+                      src="https://picsum.photos/id/1005/500/500"
                       alt="Nishad Raghuvanshi"
                       className="w-full h-full object-cover"
                       onError={(e) => {
                         // Fallback to different dummy image if first one fails
-                        e.currentTarget.src = "https://picsum.photos/500/500?random=42";
+                        e.currentTarget.src = "https://picsum.photos/id/1006/500/500";
                       }}
                     />
                   </div>

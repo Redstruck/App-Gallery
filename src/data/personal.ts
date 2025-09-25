@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Nishad Raghuvanshi",
   title: "Full Stack Developer & Creative Problem Solver",
   bio: "High school student passionate about creating innovative solutions through code. I build applications that solve real-world problems while exploring the intersection of technology and creativity. Currently focusing on AI/ML, physics simulations, and modern web development.",
-  email: "nishad.dev@example.com", // Replace with your actual email
+  email: "nishad.raghuvanshi@gmail.com",
   photo: "/lovable-uploads/profile-placeholder.png", // You can replace this with your actual photo path
   skills: [
     { name: "React", level: 90, category: "Frontend" },

@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Nishad Raghuvanshi",
   title: "Full Stack Developer & Creative Problem Solver",
-  bio: "High school student passionate about creating innovative solutions through code. I build applications that solve real-world problems while exploring the intersection of technology and creativity. Currently focusing on AI/ML, physics simulations, and modern web development.",
+  bio: "I’m a high school student with a strong interest in coding, AI, and cybersecurity. I’ve built hands-on projects, as well as vibe-coded projects in Python, HTML, Typescript and JavaScript, especially through React framework. I enjoy building practical web applications and fun interactive tools. I have worked extensively with many popular vibe-coding tools like Lovable, Bolt.new, Github Copilot, and Gemini CLI. My long-term goal is to pursue a career in technology, with a focus on artificial intelligence and security.",
   email: "nishad.raghuvanshi@gmail.com",
   photo: "/lovable-uploads/profile-placeholder.png", // You can replace this with your actual photo path
   skills: [

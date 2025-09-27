@@ -186,7 +186,7 @@ export const ContactSection = () => {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-2 px-8 py-3 bg-blue-500/20 border border-blue-500 text-blue-400 rounded font-mono hover:bg-blue-500/30 transition-colors"
+              className="inline-flex items-center space-x-2 px-8 py-3 bg-blue-500/30 border border-blue-500 text-blue-400 rounded font-mono hover:bg-blue-500/40 transition-colors"
             >
               <span>{'>'} return_to_top.exe</span>
             </motion.button>

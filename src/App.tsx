@@ -40,7 +40,9 @@ const App = () => {
   }, []);
 
   const handleNavigate = (section: string) => {
-    const elementId = section === 'home' ? 'hero' : section;
+    // Map 'skills' command to the 'about' section element
+    const elementId =
+      section === 'home' ? 'hero' : section === 'skills' ? 'about' : section;
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

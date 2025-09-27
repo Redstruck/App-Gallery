@@ -152,7 +152,7 @@ export const ContactSection = () => {
                 <div className="flex items-center space-x-4">
                   <social.icon className={`w-8 h-8 ${social.color} transition-colors`} />
                   <div className="text-left">
-                    <h3 className="text-white font-mono group-hover:text-green-400 transition-colors">
+                    <h3 className={`text-white font-mono transition-colors ${social.name === 'LinkedIn' ? 'group-hover:text-blue-400' : 'group-hover:text-green-400'}`}>
                       {social.name}
                     </h3>
                     <p className="text-gray-400 text-sm">

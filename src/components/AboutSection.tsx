@@ -101,7 +101,7 @@ export const AboutSection = () => {
               </div>
 
               {/* Skills */}
-              <div className="bg-black/50 border border-blue-500/30 p-6 rounded-lg backdrop-blur-sm">
+              <div id="skills" className="bg-black/50 border border-blue-500/30 p-6 rounded-lg backdrop-blur-sm">
                 <h3 className="text-xl font-bold text-blue-400 mb-4 font-mono">
                   $ ./skills --list
                 </h3>

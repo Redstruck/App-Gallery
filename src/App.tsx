@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 const App = () => {
   const [currentSection, setCurrentSection] = useState('home');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [lastManualNavigation, setLastManualNavigation] = useState<string | null>(null);
 
   // Track mouse movement for subtle cursor effects
   useEffect(() => {
@@ -26,10 +27,35 @@ const App = () => {
       const sections = ['home', 'about', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
+      // Get elements
+      const skillsElement = document.getElementById('skills');
+      const aboutElement = document.getElementById('about');
+
+      // If we're in the skills area and the user manually navigated to skills, keep it as skills
+      if (skillsElement && scrollPosition >= skillsElement.offsetTop && scrollPosition < skillsElement.offsetTop + skillsElement.offsetHeight) {
+        if (lastManualNavigation === 'skills') {
+          setCurrentSection('skills');
+          return;
+        } else if (lastManualNavigation === 'about') {
+          // User navigated to about, keep it as about even when scrolling through skills area
+          setCurrentSection('about');
+          return;
+        }
+      }
+
+      // Regular section detection for major sections
       for (let i = sections.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sections[i] === 'home' ? 'hero' : sections[i]);
+        const section = sections[i];
+        const element = document.getElementById(section === 'home' ? 'hero' : section);
         if (element && scrollPosition >= element.offsetTop) {
-          setCurrentSection(sections[i]);
+          // Only change section if we've scrolled to a completely different major section
+          if (section !== 'about' || lastManualNavigation !== 'skills') {
+            setCurrentSection(section);
+            // Clear manual navigation when we scroll to a different major section
+            if (section !== 'about') {
+              setLastManualNavigation(null);
+            }
+          }
           break;
         }
       }
@@ -37,12 +63,16 @@ const App = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastManualNavigation]);
 
   const handleNavigate = (section: string) => {
-    // Map 'skills' command to the 'about' section element
-    const elementId =
-      section === 'home' ? 'hero' : section === 'skills' ? 'about' : section;
+    // Set the current section state immediately for proper highlighting
+    setCurrentSection(section);
+    // Track manual navigation to preserve intent
+    setLastManualNavigation(section);
+    
+    // Map sections to their corresponding element IDs
+    const elementId = section === 'home' ? 'hero' : section;
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/personal';
 
@@ -14,17 +14,17 @@ export const HeroSection = () => {
   const [mainCurrentLine, setMainCurrentLine] = useState(0);
   const [showButtons, setShowButtons] = useState(false);
 
-  const commandLines = [
+  const commandLines = useMemo(() => [
     '> Initializing portfolio...',
     '> Loading personal data...',
     '> Compiling projects...',
     '> Ready to showcase skills...',
-  ];
+  ], []);
 
-  const mainLines = [
+  const mainLines = useMemo(() => [
     `Hello, I'm ${personalInfo.name}`,
     personalInfo.title,
-  ];
+  ], []);
 
   useEffect(() => {
     if (currentLine >= commandLines.length) {
